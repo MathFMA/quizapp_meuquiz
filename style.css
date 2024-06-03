@@ -142,8 +142,26 @@ main {
          background-repeat: no-repeat;
     }
 
-    header {
+    header { 
         margin-block: 81px;
+    }
+    
+    .tema {
+        gap: 16px;
+    }
+    
+    .tema img {
+        width: 24px;
+    }
+
+    .tema button {
+        width: 48px;
+        height: 28px;
+    }
+
+    .tema button div {
+        width: 20px;
+        height: 20px;
     }
 
     main {
@@ -165,13 +183,19 @@ main {
         font-size: 20px;
     }
 
+    .assuntos {
+        gap:24px;
+    }
+     
     .assuntos button {
         font-size: 28px;
         padding: 20px;
+        gap: 32px;
     }
 
     .assuntos button div {
         width: 56px;
         height: 56px;
+        padding: 8px;
     }
 }
