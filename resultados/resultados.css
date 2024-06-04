@@ -196,4 +196,8 @@ main button>hover {
         width: 20px;
         height: 20px;
     }
+
+    main > div {
+        display: flex;
+    }
 }
