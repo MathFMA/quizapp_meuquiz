@@ -98,7 +98,7 @@ function montarPergunta() {
                         </label>
                     </form>  
                     
-                    <button>Enviar</button>
+                    <button>Responder</button>
                 </section>
    `
 }
@@ -116,6 +116,20 @@ function guardarResposta(evento) {
 }
 
 function validarResposta() {
+   const botaoEnviar = document.querySelector(".alternativas button")
+   botaoEnviar.innerText = "Próxima"
+   botaoEnviar.removeEventListener("click", validarResposta)
+   botaoEnviar.addEventListener("click", proximaPergunta)
+   
+
+   if (pergunta === 10){
+      botaoEnviar.innerText = "Finalizar"
+      botaoEnviar.addEventListener ("click",finalizar)
+      
+   } else {
+      botaoEnviar.removeEventListener ("click",proximaPergunta)
+   }
+
    if(resposta ===quiz.questions(pergunta-1).answer) {
       document.querySelector(`label[form'${idInputResposta}']`).setAttribute("id", "correta")
       pontos = pontos + 1 
@@ -123,13 +137,23 @@ function validarResposta() {
       document.querySelector(`label[form'${idInputResposta}']`).setAttribute("id", "errada")
       document.querySelector(`label[form'${respostaCorretaId}']`).setAttribute("id", "correta")
    }
+
+   pergunta = pergunta + 1
+   console.log(pergunta)
+
+   function finalizar() {
+      localStorage.setItem("pontos", pontos)
+
+      window.location.href = "../resultado/resultado.html"
+   }
 }
 
-async function iniciar() {
-   alterarAssunto()
-   await buscarPerguntas()
+function proximaPergunta() {
    montarPergunta()
+   adicionarEventoInput()
+}
 
+function adicionarEventoInput() {
    const inputReposta = document.querySelectorAll(".alternativas input")
    inputResposta.forEach(input => {
       input.addEventListener("click", guardarResposta)
@@ -137,6 +161,14 @@ async function iniciar() {
       if (input.value ===quiz.questions[pergunta-1].answer)
          respostaCorretaId = input.id
    })
+}
+
+async function iniciar() {
+   alterarAssunto()
+   await buscarPerguntas()
+   montarPergunta()
+   adicionarEventoInput()
+   
 }
 
 iniciar()
