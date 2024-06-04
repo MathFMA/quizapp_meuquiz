@@ -65,6 +65,35 @@ header {
     border-radius: 5px;
 }
 
+.assunto {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.assunto_icone {
+    width: 40px;
+    height:40 px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.assunto_icon.html {
+    background: var(--bg-html);
+}
+
+.assunto_icon.css {
+    background: var(--bg-css);
+}
+
+.assunto_icon.javascript {
+    background: var(--bg-javascript);
+}
+
+.assunto_icon.acessiblidade {
+    background: var(--bg-acessibilidade);
+}
+
 .assunto_icone img {
     width: 100%;
 } 
